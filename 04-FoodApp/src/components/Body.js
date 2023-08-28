@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
+  const [filterList, setFilterList] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -17,13 +18,15 @@ const Body = () => {
     );
 
     const json = await data.json();
-    const restList = json.data.cards.splice(3);
+    const restList = json.data?.cards?.splice(3);
 
-    console.log(restList[0].card.card);
+    console.log(restList);
+
     setResList(restList);
+    setFilterList(restList);
   };
 
-  return resList.length === 0 ? (
+  return filterList.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -37,22 +40,36 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button>🔍</button>
+          <button
+            onClick={() => {
+              const filterText = resList.filter((res) =>
+                res.card.card.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase())
+              );
+              setFilterList(filterText);
+              console.log(filterText);
+              console.log(searchText);
+            }}
+          >
+            🔍
+          </button>
         </div>
         <button
           onClick={() => {
-            const filteredList = resList.map(
-              (res) => res.card.card.info.avgRating > 4
+            const filteredList = filterList.filter(
+              (res) => res.card?.card?.info?.avgRating > 4
             );
-            setResList(filteredList);
+            setFilterList(filteredList);
+            console.log(filteredList);
           }}
         >
           Top Restaurents
         </button>
       </div>
       <div className="res-container">
-        {resList.map((res) => (
-          <RestaurentCard key={res.card.card.info.id} resData={res} />
+        {filterList.map((res) => (
+          <RestaurentCard key={res.card?.card?.info?.parentId} resData={res} />
         ))}
       </div>
     </div>
