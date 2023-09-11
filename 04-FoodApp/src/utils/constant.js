@@ -6,3 +6,6 @@ export const CDN_URL =
 
 export const MENU_API =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9063433&lng=77.5856825&restaurantId=";
+
+export const RES_API =
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9063433&lng=77.5856825&collection=83646&isNewCollectionFlow=true&tags=layout_CCS_SouthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null";
