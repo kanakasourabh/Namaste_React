@@ -11,7 +11,7 @@ class UserClass extends React.Component {
         location: "Default",
       },
     };
-    console.log("Child Constructor called");
+    // console.log("Child Constructor called");
   }
 
   async componentDidMount() {
@@ -26,18 +26,18 @@ class UserClass extends React.Component {
     this.setState({
       userInfo: json,
     });
-    console.log(json);
+    // console.log(json);
 
-    console.log(this.props.name + "Child Did mount");
+    // console.log(this.props.name + "Child Did mount");
   }
 
-  componentDidUpdate() {
-    console.log("Component Did update!!!");
-  }
+  // componentDidUpdate() {
+  //   console.log("Component Did update!!!");
+  // }
 
   componentWillUnmount() {
     clearInterval(this.timer);
-    console.log("Component Will Unmount");
+    // console.log("Component Will Unmount");
   }
   render() {
     const { name, location, avatar_url } = this.state.userInfo;

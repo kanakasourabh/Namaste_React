@@ -15,7 +15,7 @@ const User = ({ name }) => {
     };
   }, []);
 
-  console.log("render");
+  // console.log("render");
 
   return (
     <div className="user-card">
