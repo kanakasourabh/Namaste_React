@@ -5,6 +5,7 @@ import User from "./User";
 
 const RestaurentCard = (props) => {
   const { resData } = props;
+  console.log(resData);
   const { LoggedUser } = useContext(UserContext);
 
   return (
